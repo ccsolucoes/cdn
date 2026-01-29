@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>CC Soluções CDN Demo</title>
+
+  <link rel="stylesheet" href="../cc-layout/1.0.0/cc-layout.css">
+  <link rel="stylesheet" href="../cc-reveal/1.0.0/cc-reveal.css">
+  <link rel="stylesheet" href="../ccui/1.0.0/ccui-motion.css">
+
+  <style>
+    body{ margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial; background:#f6f4ef; color:#141414; }
+    header{ padding:24px 0; border-bottom:1px solid rgba(0,0,0,.1); background: rgba(255,255,255,.6); position: sticky; top:0; backdrop-filter: blur(10px); }
+    .card{ background: rgba(255,255,255,.8); border:1px solid rgba(0,0,0,.10); border-radius: 18px; padding:16px; box-shadow: 0 14px 40px rgba(0,0,0,.08); }
+    .btn{ display:inline-flex; padding:10px 12px; border-radius: 999px; border:1px solid rgba(0,0,0,.12); background: rgba(255,255,255,.8); text-decoration:none; color:inherit; font-weight:600; }
+    .hero{ padding-top: 34px; }
+    .cc-slider{ border-radius: 18px; border:1px solid rgba(0,0,0,.10); background: rgba(255,255,255,.75); }
+    .slide{ padding:18px; min-height: 180px; display:grid; gap:8px; }
+    .muted{ color: rgba(0,0,0,.65); }
+  </style>
+
+  <script src="../ccui/1.0.0/ccui-core.js" defer></script>
+  <script src="../cc-reveal/1.0.0/cc-reveal.js" defer></script>
+  <script src="../ccui/1.0.0/ccui-slider.js" defer></script>
+</head>
+<body>
+  <header>
+    <div class="cc-container">
+      <strong>CDN Demo</strong> <span class="muted">cc-layout + cc-reveal + ccui-slider</span>
+    </div>
+  </header>
+
+  <main>
+    <section class="cc-section hero">
+      <div class="cc-container">
+        <div class="cc-cols cols-60-40">
+          <div class="cc-stack reveal" data-reveal="up">
+            <h1 style="margin:0; line-height:1.1;">Reusable primitives, zero lock-in.</h1>
+            <p class="muted" style="margin:0;">Scroll down to see reveal animations and the slider.</p>
+            <div style="display:flex; gap:10px; flex-wrap:wrap;">
+              <a class="btn" href="#grid">Jump to grid</a>
+              <a class="btn" href="#slider">Jump to slider</a>
+            </div>
+          </div>
+
+          <div class="card reveal" data-reveal="up">
+            <p class="muted" style="margin:0;">This card uses only cc-layout for structure and cc-reveal for motion.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="grid" class="cc-section">
+      <div class="cc-container">
+        <div class="cc-stack cc-center reveal" data-reveal="up">
+          <h2 style="margin:0;">Grid primitives</h2>
+          <p class="muted" style="margin:0;">g-4 collapses to 2 columns and then 1 column automatically.</p>
+        </div>
+
+        <div class="cc-grid g-4" style="margin-top:16px;">
+          <div class="card reveal" data-reveal="up">Card 1</div>
+          <div class="card reveal" data-reveal="up">Card 2</div>
+          <div class="card reveal" data-reveal="up">Card 3</div>
+          <div class="card reveal" data-reveal="up">Card 4</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="slider" class="cc-section">
+      <div class="cc-container">
+        <div class="cc-cols cols-60-40">
+          <div class="cc-stack reveal" data-reveal="up">
+            <h2 style="margin:0;">Slider</h2>
+            <p class="muted" style="margin:0;">A lightweight, no-dependency slideshow.</p>
+          </div>
+
+          <div class="reveal" data-reveal="up">
+            <div class="cc-slider" data-slider data-interval="3200">
+              <div class="cc-track">
+                <div class="cc-slide"><div class="slide"><strong>Slide A</strong><span class="muted">Simple content slides</span></div></div>
+                <div class="cc-slide"><div class="slide"><strong>Slide B</strong><span class="muted">Auto-play + buttons</span></div></div>
+                <div class="cc-slide"><div class="slide"><strong>Slide C</strong><span class="muted">Swipe on mobile</span></div></div>
+              </div>
+              <button class="cc-prev" type="button" aria-label="Previous">‹</button>
+              <button class="cc-next" type="button" aria-label="Next">›</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cc-section">
+      <div class="cc-container">
+        <div class="card reveal" data-reveal="fade">
+          <strong>Reduced Motion:</strong> If your OS has “reduce motion” enabled, everything reveals instantly and the slider stops auto-playing.
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
