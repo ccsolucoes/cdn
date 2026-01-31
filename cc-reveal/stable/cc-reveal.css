@@ -12,7 +12,7 @@
 /* Base reveal */
 .reveal{
   opacity: 0;
-  transform: translateY(var(--reveal-distance));
+  transform: none;
   transition:
     opacity var(--reveal-duration) var(--reveal-ease),
     transform var(--reveal-duration) var(--reveal-ease);
