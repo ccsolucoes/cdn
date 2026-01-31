@@ -108,6 +108,7 @@
     const to = parts.value;
 
     // If reduced motion, set final immediately
+     console.log(fromRaw)
     if (reduce) {
        console.log(el+"is reduced")
       el.textContent = `${parts.prefix}${formatNumber(to, parts.decimals, parts.decimalSep)}${parts.suffix}`;
