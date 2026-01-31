@@ -109,6 +109,7 @@
 
     // If reduced motion, set final immediately
     if (reduce) {
+       console.log(el+"is reduced")
       el.textContent = `${parts.prefix}${formatNumber(to, parts.decimals, parts.decimalSep)}${parts.suffix}`;
       return;
     }
