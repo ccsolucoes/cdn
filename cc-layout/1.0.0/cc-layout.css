@@ -1,3 +1,9 @@
+/* https://cdn.ccssolucoes.com/core/v1/cc-layout.css
+   cc-layout 1.0.0 (updated)
+   Layout primitives only
+   Paste this into your CDN repo as core/v1/cc-layout.css
+*/
+
 /* ================================
    cc-layout 1.0.0
    Layout primitives only
@@ -7,22 +13,31 @@
   --cc-gap: 16px;
   --cc-container: 1120px;
   --cc-pad: 18px;
+  --cc-line: rgba(0,0,0,.10);
 }
 
 /* Container */
 .cc-container{
-  width: min(var(--cc-container), calc(100% - (var(--cc-pad) * 2)));
+  max-width: var(--cc-container);
   margin-inline: auto;
+  padding-inline: var(--cc-pad);
 }
 
 /* Sections (spacing only) */
 .cc-section{ padding-block: 64px; }
 .cc-section--tight{ padding-block: 44px; }
+.cc-section--top{ padding-top: 64px; padding-bottom: 0; }
+.cc-section--bottom{ padding-top: 0; padding-bottom: 64px; }
+.cc-section--top-tight{ padding-top: 44px; padding-bottom: 0; }
+.cc-section--bottom-tight{ padding-top: 0; padding-bottom: 44px; }
 
 /* Stack (vertical rhythm) */
 .cc-stack{ display: grid; gap: var(--cc-gap); }
 .cc-stack--tight{ gap: calc(var(--cc-gap) * .75); }
 .cc-stack--loose{ gap: calc(var(--cc-gap) * 1.35); }
+
+/* Flow (document rhythm) */
+.cc-flow > * + *{ margin-top: var(--cc-gap); }
 
 /* ================================
    Grid system
@@ -38,8 +53,11 @@
 .cc-grid.g-3{ grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .cc-grid.g-4{ grid-template-columns: repeat(4, minmax(0, 1fr)); }
 
-/* 2x2 (often used for “4 cards but not too wide”) */
-.cc-grid.g-2x2{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
+/* 2x2 semantic helper */
+.cc-grid.g-2x2{
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: calc(var(--cc-gap) * 1.15);
+}
 
 /* Responsive collapse rules */
 @media (max-width: 980px){
@@ -59,6 +77,10 @@
 .cc-grid.g-auto{
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
 }
+
+/* Optional local gap controls */
+.cc-grid.gap-sm{ gap: 12px; }
+.cc-grid.gap-lg{ gap: 22px; }
 
 /* ================================
    Two-column section layouts
@@ -80,6 +102,10 @@
 /* 70/30 and 30/70 (useful for “content + sidebar”) */
 .cc-cols.cols-70-30{ grid-template-columns: minmax(0, 2.1fr) minmax(0, 1fr); }
 .cc-cols.cols-30-70{ grid-template-columns: minmax(0, 1fr) minmax(0, 2.1fr); }
+
+/* Optional local gap controls */
+.cc-cols.gap-sm{ gap: 12px; }
+.cc-cols.gap-lg{ gap: 22px; }
 
 /* Responsive collapse */
 @media (max-width: 980px){
@@ -105,7 +131,7 @@
 /* Simple horizontal rule */
 .cc-hr{
   height: 1px;
-  background: rgba(0,0,0,.10);
+  background: var(--cc-line);
   border: 0;
   margin-block: 18px;
 }
