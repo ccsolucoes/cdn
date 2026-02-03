@@ -1,12 +1,10 @@
-/* https://cdn.ccssolucoes.com/core/v1/cc-layout.css
-   cc-layout 1.0.0 (updated)
-   Layout primitives only
-   Paste this into your CDN repo as core/v1/cc-layout.css
+/* https://cdn.ccssolucoes.com/stable/cc-layout.css
+   cc-layout 1.0.1 (updated)
 */
 
 /* ================================
-   cc-layout 1.0.0
-   Layout primitives only
+   cc-layout 1.0.1
+   - Added Atmospheric mask for images.
    ================================ */
 
 :root{
@@ -134,4 +132,56 @@
   background: var(--cc-line);
   border: 0;
   margin-block: 18px;
+}
+/* ================================
+   Atmospheric overlay helpers (opt-in)
+   ================================ */
+
+/* Base atmospheric container */
+.cc-atmo{
+  position: relative;
+  overflow: hidden;
+}
+
+/* Light / gradient overlay */
+.cc-atmo::after{
+  content:"";
+  position:absolute;
+  inset: var(--cc-atmo-inset, -20%);
+  pointer-events:none;
+  z-index: 0;
+
+  background:
+    radial-gradient(
+      circle at var(--cc-atmo-x, 20%) var(--cc-atmo-y, 20%),
+      var(--cc-atmo-c1, rgba(0,0,0,0.08)),
+      transparent var(--cc-atmo-spot, 60%)
+    ),
+    linear-gradient(
+      var(--cc-atmo-angle, 180deg),
+      var(--cc-atmo-c2, rgba(0,0,0,0.06)),
+      transparent var(--cc-atmo-fade, 70%)
+    );
+
+  opacity: var(--cc-atmo-opacity, .9);
+  filter: blur(var(--cc-atmo-blur, 18px));
+  transform: translateZ(0);
+}
+
+/* Optional slow drift (explicit opt-in) */
+.cc-atmo.atmo-drift::after{
+  animation: ccAtmoDrift var(--cc-atmo-speed, 14s) ease-in-out infinite;
+}
+
+@keyframes ccAtmoDrift{
+  0%   { transform: translate(-2%, -1%) scale(1.02); }
+  50%  { transform: translate( 2%,  1%) scale(1.06); }
+  100% { transform: translate(-2%, -1%) scale(1.02); }
+}
+
+/* Motion safety */
+@media (prefers-reduced-motion: reduce){
+  .cc-atmo.atmo-drift::after{
+    animation: none;
+  }
 }
