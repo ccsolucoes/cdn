@@ -1,11 +1,38 @@
-/* https://cdn.ccssolucoes.com/stable/cc-layout.css
-   cc-layout 1.0.1 (updated)
-*/
+/* =========================================================
+   CC LAYOUT SYSTEM
+   https://cdn.ccssolucoes.com/stable/cc-layout.css
+
+   Version: 1.1.0
+   Status: Stable
+   Author: LuanRod
+
+   Description:
+   Core layout and structural CSS system for fast, consistent
+   website builds. Neutral, reusable, and CDN-hosted.
+
+   ========================================================= */
 
 /* ================================
-   cc-layout 1.0.1
-   - Added Atmospheric mask for images.
-   ================================ */
+   CHANGELOG
+   ================================
+
+   1.1.0
+   - Added flex helpers
+   - Added base button system
+   - Added default form inputs
+   - Stabilized nav structural base
+   - Expanded layout utility coverage
+
+   1.0.1
+   - Atmospheric overlay module added (later moved optional)
+
+   1.0.0
+   - Initial stable release
+   - Container, grid, spacing, column systems
+   - Responsive collapse logic
+   - Base utilities
+*/
+
 
 :root{
   --cc-gap: 16px;
@@ -20,6 +47,15 @@
   margin-inline: auto;
   padding-inline: var(--cc-pad);
 }
+/* Flex helpers */
+.cc-flex{ display:flex; }
+.cc-flex-center{ display:flex; align-items:center; justify-content:center; }
+.cc-flex-between{ display:flex; align-items:center; justify-content:space-between; }
+.cc-flex-start{ display:flex; align-items:center; justify-content:flex-start; }
+.cc-flex-end{ display:flex; align-items:center; justify-content:flex-end; }
+
+.cc-flex-col{ display:flex; flex-direction:column; }
+.cc-flex-wrap{ flex-wrap:wrap; }
 
 /* Sections (spacing only) */
 .cc-section{ padding-block: 64px; }
@@ -121,6 +157,73 @@
   max-width: 760px;
   margin-inline: auto;
 }
+/* Buttons base */
+.cc-btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+
+  padding:12px 18px;
+  border-radius:10px;
+
+  font:inherit;
+  text-decoration:none;
+  cursor:pointer;
+  border:1px solid transparent;
+
+  transition:all .2s ease;
+}
+
+/* Forms */
+.cc-input,
+.cc-textarea,
+.cc-select{
+  width:100%;
+  padding:12px 14px;
+  border-radius:10px;
+  border:1px solid var(--cc-line);
+  font:inherit;
+  background:transparent;
+}
+
+/* Navbar base */
+.cc-nav{
+  position:relative;
+  z-index:20;
+}
+
+.cc-nav-inner{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+}
+
+.cc-nav-links{
+  display:flex;
+  gap:18px;
+  align-items:center;
+}
+
+.cc-nav-toggle{
+  display:none;
+}
+
+@media (max-width: 860px){
+  .cc-nav-links{ display:none; }
+  .cc-nav-toggle{ display:block; }
+}
+
+
+.cc-textarea{ min-height:120px; resize:vertical; }
+
+.cc-label{
+  display:block;
+  margin-bottom:6px;
+  font-size:.9rem;
+}
+
 
 /* Control gap per section without new classes */
 .cc-gap-sm{ --cc-gap: 12px; }
