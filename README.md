@@ -1,4 +1,5 @@
-# CC Soluções — Frontend CDN System
+# CC Soluções
+## Frontend CDN System
 
 Core frontend structure and UI utilities used across my websites and client projects.  
 This repository functions as a versioned CDN package for layout, motion, and lightweight UI behavior.
